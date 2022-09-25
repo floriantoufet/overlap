@@ -33,10 +33,10 @@ func NewProcessor() *Processor {
 
 // GetOverlapRelation check the relation between two CIDRs
 // The relation can be:
-// 	subset: if the network of the second address is included in the first one
-// 	superset: if the network of the second address includes the first one
-// 	different: if the two networks are not overlapping
-// 	same: if both address are in the same network
+// subset: if the network of the second address is included in the first one
+// superset: if the network of the second address includes the first one
+// different: if the two networks are not overlapping
+// same: if both address are in the same network
 // Returns relation or an error if given IP is not an IPv4.
 func (p *Processor) GetOverlapRelation(cidrA, cidrB string) (NetworkRelation, error) {
 	var (

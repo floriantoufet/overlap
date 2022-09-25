@@ -12,6 +12,8 @@ import (
 
 //go:generate mockgen -destination mock_test.go -source $GOFILE -package handler_test
 
+const expectedNumberOfArg = 2
+
 // ErrInvalidNumberArgs when too much or not enough arguments given.
 var ErrInvalidNumberArgs = errors.New("invalid number of arguments")
 
@@ -37,14 +39,14 @@ func NewHandler(processor Processor) *Handler {
 // returns an error if processor returns an error or unable to write into output.
 func (h *Handler) PrintOverlapRelation(args []string, output io.Writer) error {
 	// Check args.
-	if len(args) != 2 {
+	if len(args) != expectedNumberOfArg {
 		return ErrInvalidNumberArgs
 	}
 
 	// Call processor
 	relation, err := h.processor.GetOverlapRelation(strings.TrimSpace(args[0]), strings.TrimSpace(args[1]))
 	if err != nil {
-		return err
+		return fmt.Errorf("unable to get overlap relation: %w", err)
 	}
 
 	// Write relation in given output.

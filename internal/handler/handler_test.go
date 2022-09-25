@@ -62,6 +62,6 @@ func TestHandler_GetOverlapRelation(t *testing.T) {
 		h := handler.NewHandler(p)
 
 		var output bytes.Buffer
-		assert.EqualError(t, h.PrintOverlapRelation([]string{cidrA, cidrB}, &output), "some error")
+		assert.EqualError(t, h.PrintOverlapRelation([]string{cidrA, cidrB}, &output), "unable to get overlap relation: some error")
 	})
 }

@@ -1,2 +1,34 @@
 linters:
   enable-all: true
+  disable:
+    - funlen
+    - ifshort
+    - nosnakecase
+    - scopelint
+    - exhaustivestruct
+    - varcheck
+    - maligned
+    - golint
+    - structcheck
+    - interfacer
+    - deadcode
+    - rowserrcheck
+    - sqlclosecheck
+    - wastedassign
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: cmd/.*
+      linters:
+        - gci
+        - gochecknoinits
+        - exhaustruct
+        - gochecknoglobals
+
+    - path: _test\.go
+      linters:
+        - gci
+        - goconst
+        - goerr113
+        - lll

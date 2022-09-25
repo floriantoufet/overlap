@@ -62,9 +62,11 @@ func (p *Processor) GetOverlapRelation(cidrA, cidrB string) (NetworkRelation, er
 	if aInB && bInA {
 		return SameRelation, nil
 	}
+
 	if aInB && !bInA {
 		return SupersetRelation, nil
 	}
+
 	if bInA && !aInB {
 		return SubsetRelation, nil
 	}
@@ -73,7 +75,7 @@ func (p *Processor) GetOverlapRelation(cidrA, cidrB string) (NetworkRelation, er
 }
 
 // getIPv4Network check if givent CIDR is a correct IPv4 and
-// returns netip.Prefix from given IP
+// returns netip.Prefix from given IP.
 func getIPv4Network(cidr string) (*netip.Prefix, error) {
 	// Check if CIDR is correct IP.
 	network, err := netip.ParsePrefix(cidr)

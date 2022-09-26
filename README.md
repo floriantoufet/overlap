@@ -11,8 +11,10 @@ two CIDRs.
 
 ### Build binary
 
-go mod download
-<br/>go build -o overlap main.go
+ ```shell script
+ $ go mod download
+ $ go build -o overlap main.go
+ ```
 
 ### Run
 
@@ -25,6 +27,7 @@ go mod download
 
 #### Requirements
 
+- install [godog](https://github.com/cucumber/godog)
 - install [golangci](https://github.com/golangci/golangci-lint)
 
 #### Run tests

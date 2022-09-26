@@ -33,3 +33,5 @@ jobs:
           version: v1.49
       - name: Test unit
         run: go test -v ./...
+      - name: Integration test
+        run: go install github.com/cucumber/godog/cmd/godog@v0.12.5 && go mod download && go build -o test/godog/overlap main.go && cd test/godog && go mod download && godog run
